@@ -1,0 +1,1 @@
+export type SearchParamT = string | undefined | string[]
