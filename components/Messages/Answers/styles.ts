@@ -5,13 +5,7 @@ export const Container = styled.div`
     width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    background-color: #f6f6f7;
-    height: 400px;
     gap: 3px;
-    border: 1px solid #1b3eb1;
-    box-shadow: 0px 0px 7px 2px #1839cc;
-    border-radius: 10px;
 `;
 
 
@@ -65,4 +59,14 @@ export const Question = styled.div`
 export const AnswerText = styled.div`
     max-height: 40px;
     overflow: hidden;
+`;
+
+export const NoAnswers = styled.div`
+    width: 100%;
+    font-size: 18px;
+    font-weight: 200;
+    height:200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 `;

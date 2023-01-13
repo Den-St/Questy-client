@@ -23,4 +23,5 @@ export type UserT = {
     favoriteHashTags:HashTagT[];
     subscribedQuestions:QuestionT[];
     notSeenAnswers:AnswerT[];
+    correctAnswersOnSubscribedQuestions:AnswerT[];
 }

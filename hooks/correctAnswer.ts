@@ -7,6 +7,7 @@ export const useCorrectAnswer = (answer:AnswerT) => {
     const [isCorrect,setIsCorrect] = useState(answer.correct);
 
     const onCorrect = async () => {
+        if(isCorrect) return;
         setLoading(true);
         try{
             setIsCorrect(prev => !prev);

@@ -11,11 +11,8 @@ export const useGetNotSeenAnswers = () => {
 
     const fetch = async () => {
         setLoading(true);
-        const dto = {
-            userId
-        }
         try{
-            const res = await axios.post<UserT>('/users/getNotSeenAnswers',dto)
+            const res = await axios.get<UserT>(`/users/getNotSeenAnswers/${userId}`);
             setAnswers(res.data.notSeenAnswers);
         }catch(err){
             console.log(err);

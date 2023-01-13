@@ -1,16 +1,28 @@
-import { Messages } from "../../components/Messages";
-import { useGetNotSeenAnswers } from "../../hooks/getNotSeenAnswers";
-import { Overlay ,ModalWrapper} from "./styles";
+import { useState } from "react";
+import { Overlay ,ModalWrapper, Container, Header, Dir, Divider} from "./styles";
+import { Answers } from "./Answers";
+import { Correct } from "./Correct";
+import {CheckOutlined} from '@ant-design/icons';
 
 type Props = {
     onClose:() => void;
 }
 
 export const MessagesModal:React.FC<Props> = ({onClose}) => {
-    const {answers,loading} = useGetNotSeenAnswers();
+    const [dir,setDir] = useState('answers');
 
     return <>
         <Overlay onClick={onClose}/>
-        <ModalWrapper><Messages answers={answers} loading={loading}/></ModalWrapper>
+        <ModalWrapper>
+            <Container>
+                <Header>
+                    <Dir $active={dir === 'answers'} onClick={() => setDir('answers')}>Answers</Dir>
+                    <Divider/>
+                    <Dir $active={dir === 'correct'} onClick={() => setDir('correct')}>Correct Answers <CheckOutlined/></Dir>
+                </Header>
+            {dir === 'answers' && <Answers/>}
+            {dir === 'correct' && <Correct/>}
+            </Container>
+        </ModalWrapper>
     </>
 }
