@@ -27,7 +27,7 @@ export const AnswerComponent:React.FC<Props> = ({correctLoading,onCorrect,isCorr
                 <Rating>{rating}</Rating>
                 <RatingButton onClick={onDown} disabled={ratesLoading} $active={rates.down}><CaretDownOutlined/></RatingButton>
                 {isCorrect && userId !== answer.creator.id && <CorrectButton $correct={isCorrect}><CheckOutlined /></CorrectButton>}
-                {userId === answer.creator.id && <CorrectButton onClick={onCorrect} disabled={correctLoading} $correct={isCorrect}><CheckOutlined /></CorrectButton>}
+                {userId === answer.question.creator.id && <CorrectButton onClick={onCorrect} disabled={correctLoading} $correct={isCorrect}><CheckOutlined /></CorrectButton>}
             </RatingContainer>
             <Body dangerouslySetInnerHTML={{__html:answer.text}}/>
         </BodyContainer>

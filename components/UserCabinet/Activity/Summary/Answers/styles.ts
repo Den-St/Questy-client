@@ -8,6 +8,7 @@ export const Container = styled.div`
     display: grid;
     place-items: center;
     border-radius:5px ;
+    max-width: 510px;
 `;
 
 export const Answer = styled.div`
@@ -17,6 +18,7 @@ export const Answer = styled.div`
     padding: 17px 12px;
     align-items: center;
     justify-content: space-between;
+    max-width: 510px;
 `;
 
 export const Rating = styled.div<{$isCorrect:boolean}>`
@@ -43,9 +45,19 @@ export const Title = styled(Link)`
     overflow: hidden;
 `;
 
+export const Text = styled(Link)`
+    height: 28px;
+    max-width:80%;
+    overflow: hidden;
+    & p{
+        margin: 0;
+    }
+`;
+
 export const Left = styled.div`
     display: flex;
     align-items: center;
+    max-width: 80%;
 `;
 
 export const Date = styled.span`

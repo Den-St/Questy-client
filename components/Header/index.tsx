@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import { UserT } from '../../types/user'
-import SearchBar from './SearchBar'
 import { AskQuestion, Avatar, Buttons, Container, Divider, Login, Logo, Messages, Registration, SignMenu, User } from './styles'
 import {links} from '../../constants/routes';
 import { LoginModal } from '../../containers/modal/login.modal';
 import { routes } from '../../helpers/route';
 import {BellOutlined} from '@ant-design/icons';
 import { MessagesModal } from '../../containers/MessagesModal';
+import { SearchBar } from '../../containers/Header/SearchBar';
 
 type Props = {
   user:UserT | null

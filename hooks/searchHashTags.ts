@@ -14,8 +14,12 @@ export const useSearchHashTags = () => {
             return;
         }
         setLoading(true);
-        const res = await axios.post<HashTagT[]>("/hash-tags/searchByName",{name:value});
-        setHashTags(res.data as HashTagT[]);
+        try{
+            const res = await axios.post<HashTagT[]>("/hash-tags/searchByName",{name:value});
+            setHashTags(res.data as HashTagT[]);
+        }catch(err){
+            console.log(err);
+        }
         setLoading(false);
     }
     

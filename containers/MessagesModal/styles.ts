@@ -1,3 +1,4 @@
+import { colors } from './../../assets/palette';
 import styled from "styled-components";
 
 export const Overlay = styled.div`
@@ -22,11 +23,11 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #f6f6f7;
+    background-color: #ffffff;
     height: 400px;
     gap: 3px;
-    border: 1px solid #1b3eb1;
-    box-shadow: 0px 0px 7px 2px #1839cc;
+    border: 1px solid #243261;
+    box-shadow: 1px 1px 7px 1px ${colors.blues['-100']};
     border-radius: 10px;
 `;
 
@@ -52,7 +53,7 @@ export const Dir = styled.button<{$active:boolean}>`
     height: 30px;
     font-size: 14px;
     font-weight: 100;
-    background-color: ${({$active}) => $active && `#a0a0a078`};
+    background-color: ${({$active}) => $active && `#c3c3c35b`};
     transition:0.1s;
     &:hover{
         background-color:#9594942d;

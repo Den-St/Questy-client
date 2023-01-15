@@ -5,6 +5,7 @@ export const Container = styled.div`
     padding-left: 7%;
     padding-top: 30px;
     padding-bottom: 30px;
+    max-width: 900px;
 `;
 
 export const Wrapper = styled.form`

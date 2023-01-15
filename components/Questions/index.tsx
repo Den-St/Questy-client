@@ -48,7 +48,7 @@ export const QuestionsComponent:React.FC<Props> = ({onChangeOnlyAnswered,onChang
         },
         {
             value:JSON.stringify({orderFieldName:'rating',orderValue:'DESC'}),
-            label:'Rating(DESC)'
+            label:'Rating(DESC)',
         },
     ];
 
@@ -107,6 +107,7 @@ export const QuestionsComponent:React.FC<Props> = ({onChangeOnlyAnswered,onChang
                     <Title href={`/questions/${question.id}`}>{question.title}</Title>
                 </QuestionContainer>
                 <Divider key={question.createdAt}/>    
+
                 </>
             )}
         </QuestionsContainer>

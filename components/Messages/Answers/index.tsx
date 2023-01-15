@@ -1,7 +1,7 @@
 import { Spin } from "antd";
 import { formatedDate, formatT } from "../../../helpers/formatedDate";
 import { AnswerT } from "../../../types/answer"
-import { AnswerContainer, AnswersContainer,Date, AnswerText, Container, Header, Question, NoAnswers } from "./styles"
+import { AnswerContainer, AnswersContainer,Date, AnswerText, Container, Header, Question, NoAnswers, QuestionTitle } from "./styles"
 import {Loading3QuartersOutlined} from '@ant-design/icons';
 
 type Props = {
@@ -12,7 +12,7 @@ type Props = {
 export const AnswersMessages:React.FC<Props> = ({answers,loading}) => {
     return <AnswersContainer>
             {!loading && answers?.map(answer => <AnswerContainer key={answer.id} href={`/questions/${answer.question.id}`}>
-                <Question>Question:{answer.question.title}</Question>
+                <Question>QUESTION:<QuestionTitle>{answer.question.title}</QuestionTitle></Question>
                 <AnswerText dangerouslySetInnerHTML={{__html:answer.text}}/>
                 <Date>{formatedDate(answer.createdAt,formatT.dashed)}</Date>
             </AnswerContainer>)}

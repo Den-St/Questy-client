@@ -38,27 +38,36 @@ export const AnswerContainer = styled(Link)`
     display: flex;
     flex-direction: column;
     gap: 3px;
-    padding: 3px;
+    padding: 5px;
     border-bottom: 1px solid black;
     cursor: pointer;
     &:hover{
         background-color: #eff0f3;
     }
+    transition: 0.2s;
 `;
 
 export const Question = styled.div`
     display: flex;
     gap: 5px;
-    font-size: 14px;
+    font-size: 12px;
+    font-weight: 600;
+    align-items: center;
+`;
+
+export const QuestionTitle = styled.span`
     max-width: 80%;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    font-size: 16px;
+    font-weight: 100;
 `;
 
 export const AnswerText = styled.div`
-    max-height: 40px;
-    overflow: hidden;
+    max-height: 60px;
+    overflow-x: hidden;
+    overflow-y: scroll;
 `;
 
 export const NoAnswers = styled.div`
