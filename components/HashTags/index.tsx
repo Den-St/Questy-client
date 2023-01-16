@@ -1,14 +1,12 @@
 import { Pagination, Select } from "antd"
-import { DebouncedFunc } from "lodash"
 import { HashTagT } from "../../types/hash-tag"
-import { SearchParamT } from "../../types/searchParamT"
-import { Container, Filters, HashTagContainer, HashTagDescription, HashTagName, HashTagsContainer, Header, NoItems, StatNumber, StatsContainer } from "./styles"
+import { Container, Filters, HashTagContainer, HashTagDescription, HashTagName, HashTagsContainer, HashTagTop, Header, NoItems, Star, StatNumber, StatsContainer } from "./styles"
 import {SearchBar} from "../Users/SearchBar";
-import { onChangeSearchParams } from "../../helpers/changeUsersSearchParams"
 import { PaginationContainer } from "../UserCabinet/Activity/Questions/styles"
 import { useRouter } from "next/router"
 import { Divider } from "../UserCabinet/Activity/Summary/Answers/styles"
 import { hashTagUrl } from "../../helpers/route"
+import {StarFilled} from '@ant-design/icons';
 
 type Props = {
     paginatedHashTags:{
@@ -18,9 +16,12 @@ type Props = {
     onChangeOrder:(value:string) => void;
     onChangePage:(page:number) => void;
     onConfirmSearch:(value?:string) => void;
+    favoriteLoading:boolean;
+    isFavorite:(id:number) => boolean;
+    onToggleFavorite:(id:number) => void;
 }
 
-export const HashTagsComponent:React.FC<Props> = ({paginatedHashTags,onConfirmSearch,onChangePage,onChangeOrder}) => {
+export const HashTagsComponent:React.FC<Props> = ({onToggleFavorite,favoriteLoading,isFavorite,paginatedHashTags,onConfirmSearch,onChangePage,onChangeOrder}) => {
     const router = useRouter();
     const {page,orderFieldName,orderValue,search} = router.query;
 
@@ -51,7 +52,12 @@ export const HashTagsComponent:React.FC<Props> = ({paginatedHashTags,onConfirmSe
         <HashTagsContainer>
             {!!paginatedHashTags.hashTags.length ? paginatedHashTags.hashTags.map(hashTag =>
                 <HashTagContainer key={hashTag.id}>
-                    <HashTagName href={hashTagUrl(hashTag.name)}>{hashTag.name}</HashTagName>
+                    <HashTagTop>
+                         <HashTagName href={hashTagUrl(hashTag.name)}>{hashTag.name}</HashTagName>
+                         <Star disabled={favoriteLoading} onClick={() => onToggleFavorite(hashTag.id)} $isFavorite={isFavorite(hashTag.id)}>
+                            <StarFilled/>
+                         </Star>
+                    </HashTagTop>
                     <HashTagDescription>{hashTag.description}</HashTagDescription>
                     <StatsContainer>
                         <StatNumber>{hashTag.questionsNumber} questions</StatNumber>

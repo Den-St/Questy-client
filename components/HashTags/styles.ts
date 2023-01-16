@@ -64,6 +64,20 @@ export const HashTagDescription = styled.p`
     margin: 0;
 `;
 
+export const HashTagTop = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+`;
+
+export const Star = styled.button<{$isFavorite:boolean}>`
+    font-size: 20px;
+    color:${({$isFavorite}) => $isFavorite ? `orange` : 'gray'};
+    background-color:transparent;
+    outline:none;
+    border:none;
+`;
+
 export const StatsContainer = styled.div`
     display: flex;
     flex-direction: column;

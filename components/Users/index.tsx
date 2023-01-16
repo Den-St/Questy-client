@@ -1,12 +1,12 @@
 import { Pagination, Select } from "antd"
 import { useRouter } from "next/router"
 import React from "react"
-import { routes } from "../../helpers/route"
+import { hashTagUrl, routes } from "../../helpers/route"
 import { GetAllUsersPaginateT } from "../../types/getAllUsersPaginate"
 import { PaginationContainer } from "../HashTags/styles"
 import { Divider } from "../UserCabinet/Activity/Summary/Answers/styles"
 import { SearchBar } from "./SearchBar"
-import { Avatar, Container, HashTag, HashTags, Name, Location, Rating, Right, UserContainer, UsersContainer, Header, Filters, HashTagContainer } from "./styles"
+import { Avatar, Container, HashTag, HashTags, Name, Location, Rating, Right, UserContainer, UsersContainer, Header, Filters } from "./styles"
 
 type Props = {
     paginatedUsers:GetAllUsersPaginateT,
@@ -61,7 +61,7 @@ export const UsersComponent:React.FC<Props> = ({onConfirmSearch,paginatedUsers,t
                     <HashTags>
                         {user.createdHashTags?.map(hashTag => 
                             <>
-                                <HashTag href={`/hash-tag/${hashTag.id}`}>{hashTag.name}</HashTag>
+                                <HashTag href={hashTagUrl(hashTag.name)}>{hashTag.name}</HashTag>
                             </>
                         )}
                     </HashTags>
