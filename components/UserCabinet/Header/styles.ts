@@ -9,12 +9,17 @@ export const Container = styled.div`
     grid-template-columns: 150px 500px;
     position: relative;
 `;
+export const AvatarContainer = styled.div`
+    width: 150px;
+    height: 150px;
+    border-radius: 15px;
+    object-fit: contain;
+    overflow: hidden;
+`;
 
 export const Avatar = styled.img`
     width: 150px;
     height: 150px;
-    border-radius: 5px;
-    object-fit: contain;
 `;
 
 export const TextInfo = styled.div`

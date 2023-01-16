@@ -73,6 +73,7 @@ export const Right = styled.div`
     display: flex;
     flex-direction: column;
     gap: 5px;
+    width: 175px;
 `;
 
 export const Name = styled(Link)`
@@ -93,7 +94,10 @@ export const Rating = styled.span`
 export const HashTags = styled.div`
     display: flex;
     gap: 2px;
+    flex-wrap: wrap;
+    align-items: center;
 `;
+
 
 export const HashTag = styled(Link)`
     font-size: 12px;

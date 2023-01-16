@@ -20,7 +20,7 @@ export const DetailedFilters:React.FC<Props> = ({onChangeOnlyAnswered,onChangeHa
     }
     return <DetailedFiltersContainer>
         <Filter>
-            <FilterHeader>Tagged with</FilterHeader>
+            <FilterHeader>Tagged with: </FilterHeader>
             <div>Favorite hash-tags: <Switch checked={onFavoriteHashTags} defaultChecked={false} onChange={onChangeFavorite}/></div>
             <HashTagsSelectContainer onRemoveFavoriteHashTags={onRemoveFavoriteHashTags} clicked={clicked} onFavoriteHashTags={onFavoriteHashTags} onChange={onChangeHashTags}/>
         </Filter>

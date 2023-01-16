@@ -19,7 +19,7 @@ export const EditDir:React.FC<Props> = ({user}) => {
             <LeftSideHeader>Personal information</LeftSideHeader>
             {editDirSubDirs.map(dir => 
                 <LeftSideItem $isActive={subdir === dir.name}
-                              href={routes.users.get({id:user.id.toString()})+"?dir=edit"+dir.link}>
+                              href={routes.users.get({id:user.id.toString()})+"?dir=edit"+dir.link.base}>
                                 {dir.label}
                 </LeftSideItem> )}
         </LeftSide>

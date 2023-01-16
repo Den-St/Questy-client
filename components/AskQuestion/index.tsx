@@ -178,7 +178,7 @@ export const AskQuestionComponent:React.FC<Props> = ({templatesLoading,onCreateH
                     </Button>
                     {chosenTemplate?.id 
                         ? <Button disabled={!isValidToSaveTemplate} onClick={() => onEditTemplate(question)} type={'dashed'}>
-                            `Save template` 
+                            Save template
                         </Button> 
                         : <Button disabled={!isValidToCreateTemplate} onClick={() => onCreateTemplate(question)} type={'dashed'}>
                             Create template

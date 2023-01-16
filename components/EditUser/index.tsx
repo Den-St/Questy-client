@@ -7,14 +7,11 @@ import { UserT } from "../../types/user"
 import { Label } from "../ui-kit/Form/Label"
 import { Container } from "./styles"
 const {Option} = Select;
-import dayjs from "dayjs";
 import { SecondStepT } from "../../types/registration";
 import { DebouncedFunc } from "lodash";
 import { HashTagT } from "../../types/hash-tag";
 import { useRouter } from "next/router";
 import { routes } from "../../helpers/route";
-import { useAppSelector } from "../../hooks/redux";
-import { userSlice } from "../../store/reducers/UserSlice";
 const {TextArea} = Input;
  
 type Props = {
@@ -29,8 +26,6 @@ type Props = {
 
 export const EditFormComponent:React.FC<Props>= ({isOnLogout,onLogout,user,onConfirm,success,search,hashTags}) => {
   const router = useRouter();
-  const defaultFavoriteHashTags = useAppSelector(user => user).userReducer.user?.favoriteHashTags;
-
 
   useEffect(() => {
     isOnLogout && setTimeout(() => router.push('/'),100);
@@ -38,7 +33,7 @@ export const EditFormComponent:React.FC<Props>= ({isOnLogout,onLogout,user,onCon
   },[isOnLogout,success])
 
   const [imageLoading,setImageLoading] = useState(false);
-  const [imageUrl, setImageUrl] = useState<string>(user.avatar.path);
+  const [imageUrl, setImageUrl] = useState<string>('http://localhost:4000/' + user.avatar.path);
   const uploadButton = (
     <div>
       {imageLoading ? <LoadingOutlined /> : <PlusOutlined />}
@@ -183,7 +178,7 @@ export const EditFormComponent:React.FC<Props>= ({isOnLogout,onLogout,user,onCon
           style={{ width: '100%' }}
           optionLabelProp="label"
           onSearch={search}
-          defaultValue={defaultFavoriteHashTags?.map(hashTag => hashTag.name)}
+          defaultValue={user.favoriteHashTags?.map(hashTag => hashTag.name)}
         >
         {hashTags && hashTags.map(hashTag => 
           <Option value={hashTag.name} label={hashTag.name}>

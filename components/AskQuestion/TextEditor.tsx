@@ -2,7 +2,7 @@ import dynamic from 'next/dynamic'
 import { useEffect, useState } from 'react';
 import { TextEditorWrapper } from './styles'
 
-const ReactQuill = dynamic(() => import('react-quill'),{ssr:false})
+const ReactQuill = dynamic(async () => await import('react-quill'),{ssr:false})
 
 type Props = {
     onChangeBody:() => void;

@@ -1,7 +1,7 @@
 import { links } from "../../../constants/routes"
 import { routes } from "../../../helpers/route"
 import { UserT } from "../../../types/user"
-import { Avatar, BottomInfo, Container, EditButton, BottomInfoItem, Name, TextInfo } from "./styles"
+import { Avatar, BottomInfo, Container, EditButton, BottomInfoItem, Name, TextInfo, AvatarContainer } from "./styles"
 import {EditOutlined, EnvironmentOutlined,FieldTimeOutlined} from "@ant-design/icons"
 type Props = {
     user:UserT,
@@ -17,7 +17,9 @@ export const Header:React.FC<Props> = ({user,isMe,dir}) => {
     const diffDays = Math.floor(diffTime / (1000 * 3600 * 24));
 
     return <Container>
-        <Avatar src={user?.avatar?.path}/>
+        <AvatarContainer>
+            <Avatar src={'http://localhost:4000/' + user?.avatar?.path}/>
+        </AvatarContainer>
         <TextInfo>
             <Name>{user.name}</Name>
             <BottomInfo>

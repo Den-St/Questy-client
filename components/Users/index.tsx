@@ -6,7 +6,7 @@ import { GetAllUsersPaginateT } from "../../types/getAllUsersPaginate"
 import { PaginationContainer } from "../HashTags/styles"
 import { Divider } from "../UserCabinet/Activity/Summary/Answers/styles"
 import { SearchBar } from "./SearchBar"
-import { Avatar, Container, HashTag, HashTags, Name, Location, Rating, Right, UserContainer, UsersContainer, Header, Filters } from "./styles"
+import { Avatar, Container, HashTag, HashTags, Name, Location, Rating, Right, UserContainer, UsersContainer, Header, Filters, HashTagContainer } from "./styles"
 
 type Props = {
     paginatedUsers:GetAllUsersPaginateT,
@@ -53,14 +53,18 @@ export const UsersComponent:React.FC<Props> = ({onConfirmSearch,paginatedUsers,t
         <UsersContainer>
             {paginatedUsers?.data.users && paginatedUsers.data.users.map(user => 
             <UserContainer key={user.id}>
-                <Avatar src={user.avatar?.path}/>
+                <Avatar src={'http://localhost:4000/' + user.avatar?.path}/>
                 <Right>
                     <Name href={routes.users.get({id:user.id.toString()})+'?dir=profile'}>{user.name}</Name>
                     <Location>{user.location}</Location>
                     <Rating>{user.rating}</Rating>
-                    {user.createdHashTags?.map(hashTag => <HashTags>
-                        <HashTag href={`/hash-tag/${hashTag.id}`}>{hashTag.name}</HashTag>
-                    </HashTags>)}
+                    <HashTags>
+                        {user.createdHashTags?.map(hashTag => 
+                            <>
+                                <HashTag href={`/hash-tag/${hashTag.id}`}>{hashTag.name}</HashTag>
+                            </>
+                        )}
+                    </HashTags>
                 </Right>
             </UserContainer>)}
         </UsersContainer>
