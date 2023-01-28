@@ -5,19 +5,20 @@ export const Container = styled.div`
     flex-direction:column;
     width: 100%;
     gap: 30px;
-    .select{
-        width: 220px;
-    }
+   
 `;
 
 export const Header = styled.div`
-    width: 100%;
+    width: 95%;
     height: 32px;
     display: flex;
     justify-content: space-between;
     font-size: 20px;
     font-weight: 100;
     align-items: center;
+ .select{
+    width: unset;
+    }
 `;
 
 export const AnswersContainer = styled.div`
@@ -26,5 +27,5 @@ export const AnswersContainer = styled.div`
     box-sizing: border-box;
     border: 1px solid #d7d9dc;
     border-radius: 10px;
-    width: 100%;
+    width: 95%;
 `;

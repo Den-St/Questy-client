@@ -1,5 +1,6 @@
 import Link from "next/link";
 import styled from "styled-components";
+import { Media } from "../../../../assets/breakpoints";
 import { colors } from "../../../../assets/palette";
 
 export const QuestionsContainer = styled.div`
@@ -106,7 +107,10 @@ export const Title = styled(Link)`
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
+    background-color: green;
     margin-bottom: 7px;
+    ${Media.down.m}{
+    }
 `;
 
 export const HashTagsContainer = styled.div`

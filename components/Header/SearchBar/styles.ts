@@ -1,6 +1,7 @@
 import { colors } from './../../../assets/palette';
 import styled from 'styled-components';
 import Link from 'next/link';
+import { Media } from '../../../assets/breakpoints';
 export const Container = styled.div`
     width: 40%;
     height: 30px;
@@ -10,18 +11,24 @@ export const Container = styled.div`
     align-items: center;
     box-sizing: border-box;
     padding: 5px;
+    ${Media.down.m}{
+        width: fit-content;
+    }
 `;
 
-export const Magnifier = styled.div`
+export const Magnifier = styled.button`
     width: 30px;
     height: 30px;
     font-size: 22px;
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: transparent;
+    border: none;
+    outline: none;
 `;
 
-export const SearchInput = styled.input`
+export const SearchInput = styled.input<{$focused:boolean}>`
     width: 80%;
     height: 30px;
     background-color: transparent;
@@ -34,6 +41,15 @@ export const SearchInput = styled.input`
     ::placeholder{
         color: ${colors.gray[200]};
     }
+    ${Media.down.m}{
+        display: ${({$focused}) => $focused ? `block` : `none`};
+        position:absolute;
+        top:53px;
+        left:50%;
+        transform:translate(-50%);
+        box-shadow: 1px 1px 2px 2px #535353;
+        background-color:white;
+    }
 `;
 
 export const DataContainer = styled.div`
@@ -44,7 +60,14 @@ export const DataContainer = styled.div`
     position: absolute;
     top: 53px;
     width: 500px;
+    box-sizing: border-box;
     box-shadow: 1px 1px 2px 2px #535353;
+    ${Media.down.m}{
+        top: 85px;
+        left:50%;
+        transform:translate(-50%);
+        width: 80%;
+    }
 `;
 
 export const DataItemContainer = styled.div`
@@ -101,7 +124,7 @@ export const QuestionRating = styled.span<{rating:number}>`
 `;
 
 export const AnswersNumber = styled.span`
-
+    font-size: 14px;
 `;
 
 export const UsersContainer = styled.div`
@@ -123,7 +146,7 @@ export const UserText = styled.div`
 
 export const Overlay = styled.div`
     position: fixed;
-    top: 50px;
+    top: 85px;
     bottom: 0;
     left: 0;
     right: 0;

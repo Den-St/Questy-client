@@ -11,4 +11,5 @@ export const Container = styled.div`
 export const Center = styled.div`
     display: flex;
     margin-top: 50px;
+    margin-left: 15%;
 `;

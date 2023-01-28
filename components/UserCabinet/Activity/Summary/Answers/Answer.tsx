@@ -12,11 +12,7 @@ export const AnswerItem:React.FC<Props> = ({answer}) => {
             <Rating $isCorrect={true}>
                 {answer.rating}
             </Rating>
-            {/* <Title href={`/questions/${answer.question.id}`}>
-                {answer.text}
-            </Title> */}
             <Text dangerouslySetInnerHTML={{__html:answer.text}} href={`/questions/${answer.question.id}`}/>
-                
         </Left>
         <Date>
             {formatedDate(answer.createdAt,formatT.dashed)}

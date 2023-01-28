@@ -1,5 +1,6 @@
 import { colors } from './../../assets/palette';
 import styled from "styled-components";
+import { Media } from '../../assets/breakpoints';
 
 export const Overlay = styled.div`
     position: fixed;
@@ -16,6 +17,10 @@ export const ModalWrapper = styled.div`
     width: 270px;
     height: 400px;
     border-radius: 10px;
+    ${Media.down.m}{
+        left: 50%;
+        transform: translate(-50%);
+    }
 `;
 
 export const Container = styled.div`

@@ -1,6 +1,7 @@
 import { colors } from './../../assets/palette';
 import styled from "styled-components";
 import Link from 'next/link';
+import { Media } from '../../assets/breakpoints';
 
 export const Container = styled.div`
     padding: 25px 70px;
@@ -8,6 +9,10 @@ export const Container = styled.div`
     flex-direction: column;
     width: 100%;
     gap: 10px;
+    margin-left: -15%;
+    ${Media.down.m}{
+        padding: 10px;
+    }
 `;
 
 export const DirectoriesContainer = styled.div`

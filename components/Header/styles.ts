@@ -1,6 +1,7 @@
 import { colors } from './../../assets/palette';
 import Link from "next/link";
 import styled from "styled-components";
+import { Media } from '../../assets/breakpoints';
 
 export const Container = styled.header`
     width: 100%;
@@ -12,6 +13,9 @@ export const Container = styled.header`
     background-color: ${colors.blues['300']};
     position: fixed;
     z-index: 100;
+    ${Media.down.m}{
+        padding: 0 10px;
+    }
 `;
 
 export const Logo = styled(Link)`
@@ -20,6 +24,9 @@ export const Logo = styled(Link)`
     font-family: Arial, Helvetica, sans-serif;
     font-weight: 300;
     color: white;
+    ${Media.down.m}{
+        font-size: 16px;
+    }
 `;
 
 export const User = styled(Link)`
@@ -38,6 +45,8 @@ export const AskQuestion = styled(Link)`
     font-size: 16px;
     font-weight: 200;
     color:white;
+    ${Media.down.m}{
+    }
 `;
 
 export const Buttons = styled.div`

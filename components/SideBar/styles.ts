@@ -1,6 +1,7 @@
 import { colors } from './../../assets/palette';
 import Link from 'next/link';
 import styled from 'styled-components';
+import { Media } from '../../assets/breakpoints';
 
 export const Container = styled.div`
     width: 15%;
@@ -11,6 +12,9 @@ export const Container = styled.div`
     padding-top: 30px;
     border-right: 1px solid #a7a7a7;
     gap: 5px;
+    position: fixed;
+    left: 0;
+    top: 50px;
     min-height: calc(100vh - 50px);
     background-color: ${colors.blues['300']};
     color: white;
@@ -33,8 +37,21 @@ export const Route = styled(Link)<{$chosen:boolean}>`
     &:hover{
         border-right: 5px solid white;
     }
-    border-right: ${({$chosen}) => $chosen ? `5px solid white;` : `5px solid transparent`}
+    border-right: ${({$chosen}) => $chosen ? `5px solid white;` : `5px solid transparent`};
+    ${Media.down.m}{
+        .anticon{
+            font-size:30px;
+        }
+    }
+`;
 
+export const RouterName = styled.h3`
+    font-size: 18px;
+    font-weight: 100;
+    margin: 0;
+    ${Media.down.m}{
+        display: none;
+    }
 `;
 
 export const RouteContainer = styled.div`

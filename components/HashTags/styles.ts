@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import styled from "styled-components";
+import { Media } from '../../assets/breakpoints';
 
 export const Container = styled.div`
     width: 70%;
@@ -7,6 +8,9 @@ export const Container = styled.div`
     flex-direction: column;
     gap: 30px;
     padding: 25px;
+    ${Media.down.m}{
+        width: 85%;
+    }
 `;
 
 export const Header = styled.div`
@@ -20,6 +24,10 @@ export const Filters = styled.div`
     justify-content: space-between;
     height: 40px;
     width: 100%;
+    ${Media.down.m}{
+        gap:10px;
+        flex-direction: column;
+    }
 `;
 
 export const SearchContainer = styled.div`
@@ -94,6 +102,9 @@ export const PaginationContainer = styled.div`
     width: 100%;
     display: flex;
     justify-content: center;
+    ${Media.down.m}{
+        width: 85%;
+    }
 `;
 
 export const NoItems = styled.div`

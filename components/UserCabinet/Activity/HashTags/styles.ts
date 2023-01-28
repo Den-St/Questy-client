@@ -1,5 +1,6 @@
 import Link from "next/link";
 import styled from "styled-components";
+import { Media } from "../../../../assets/breakpoints";
 
 export const HashTag = styled.div`
     width: 100%;
@@ -24,8 +25,14 @@ export const Popularity = styled.div`
     font-size: 14px;
     font-weight: 100;
     align-items: flex-end;
+    ${Media.down.m}{
+        font-size: 12px;
+    }
 `;
 
 export const PopularityNumber = styled.span`
     font-size: 18px;
+    ${Media.down.m}{
+        font-size: 14px;
+    }
 `;

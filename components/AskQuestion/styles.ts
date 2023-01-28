@@ -1,3 +1,4 @@
+import { Media } from './../../assets/breakpoints';
 import styled, { keyframes } from 'styled-components';
 
 export const Container = styled.div`
@@ -6,6 +7,9 @@ export const Container = styled.div`
     padding-top: 30px;
     padding-bottom: 30px;
     max-width: 900px;
+    ${Media.down.m}{
+        width: 95%;
+    }
 `;
 
 export const Wrapper = styled.form`
@@ -101,7 +105,12 @@ export const InputContainer = styled.div`
     .createHashTagButton{
         width: 20%;
     }
-    
+    ${Media.down.m}{
+        .createHashTagButton{
+            width: 70%;
+        }
+        
+    }
 `;
 
 export const Description = styled.span`
@@ -155,7 +164,7 @@ export const TemplateDir = styled.div`
 export const TemplateBody = styled.div`
     max-height: 150px;
     overflow-y: scroll;
-    width: 90%;
+    width: 78%;
 `;
 
 export const TemplateTitle = styled.span`
@@ -187,6 +196,12 @@ export const CreateHashTagContainer = styled.div<{$isActive:boolean}>`
     .confirmHashTagButton{
         width: 50%;
     }
+    ${Media.down.m}{
+        .confirmHashTagButton{
+            width: 90%;
+        }
+    }
+    
 `;
 
 export const NoTemplates = styled.div`

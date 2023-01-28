@@ -1,14 +1,18 @@
 import Link from 'next/link';
 import styled from 'styled-components';
+import { Media } from '../../../../../assets/breakpoints';
 import { colors } from '../../../../../assets/palette';
 
 export const Container = styled.div`
     width: 100%;
     border: 1px solid #e3e6e8;
-    display: grid;
-    place-items: center;
+    display: flex;
+    flex-direction: column;
     border-radius:5px ;
     max-width: 510px;
+    ${Media.down.m}{
+        
+    }
 `;
 
 export const Answer = styled.div`
@@ -18,7 +22,7 @@ export const Answer = styled.div`
     padding: 17px 12px;
     align-items: center;
     justify-content: space-between;
-    max-width: 510px;
+    max-width: 510px;  
 `;
 
 export const Rating = styled.div<{$isCorrect:boolean}>`
@@ -49,15 +53,22 @@ export const Text = styled(Link)`
     height: 28px;
     max-width:80%;
     overflow: hidden;
-    & p{
+    *{
         margin: 0;
+        padding: 0;
+        width: 80px;
+    }
+    ${Media.down.m}{
+        *{
+            width: 140px;
+        }
     }
 `;
 
 export const Left = styled.div`
     display: flex;
     align-items: center;
-    max-width: 80%;
+    width: 80%;
 `;
 
 export const Date = styled.span`

@@ -1,5 +1,6 @@
 import { colors } from './../../assets/palette';
 import styled from "styled-components";
+import { Media } from '../../assets/breakpoints';
 
 export const PickedHashTags = styled.div`
     
@@ -57,11 +58,15 @@ export const DetailedFiltersContainer = styled.div`
     padding: 10px;
     box-sizing: border-box;
     display: flex;
+    flex-wrap: wrap;
     gap: 20px;
     border-radius: 5px;
     gap: 20px;
     border: 1px solid #a7a7a7;
     background-color: #d6d6f9;
+    ${Media.down.m}{
+        width: 90%;
+    }
 `;
 
 export const Filter = styled.div`

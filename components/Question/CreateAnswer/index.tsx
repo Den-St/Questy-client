@@ -11,6 +11,7 @@ type Props = {
 export const CreateAnswerComponent:React.FC<Props> = ({create}) => {
     const [text,setText] = useState('');
     const isAuthed = !!useAppSelector(state => state).userReducer.user?.id;
+    const disabledButton = !isAuthed || !text;
 
     const onChange = (value:string) => {
         if(!isAuthed) {
@@ -23,6 +24,6 @@ export const CreateAnswerComponent:React.FC<Props> = ({create}) => {
     return <Container>
         <Header>Create answer</Header>
         <TextEditor onChange={onChange} text={text} isAuthed={isAuthed}/>
-        <CreateButton onClick={() => create(text)} $disabled={!isAuthed} disabled={!isAuthed}>Create</CreateButton>
+        <CreateButton onClick={() => create(text)} $disabled={disabledButton} disabled={disabledButton}>Create</CreateButton>
     </Container>
 }

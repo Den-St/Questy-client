@@ -147,7 +147,7 @@ export const EditFormComponent:React.FC<Props>= ({isOnLogout,onLogout,user,onCon
           </Form.Item>
       
       <Label>Choose your occasion</Label>
-      <Form.Item style={{'width':'300px'}} name={'occasion'}>
+      <Form.Item name={'occasion'}>
         <Select
           style={{ width: '100%' }}
           placeholder="Occasion"
@@ -188,7 +188,7 @@ export const EditFormComponent:React.FC<Props>= ({isOnLogout,onLogout,user,onCon
       </Form.Item>
 
       <Label>About me:</Label>
-      <Form.Item style={{"width":"400px",}} name="about">
+      <Form.Item className={'aboutTextArea'} name="about">
           <TextArea defaultValue={user.about} style={{"height":"200px"}}/>
       </Form.Item>
 

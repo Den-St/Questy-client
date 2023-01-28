@@ -1,6 +1,6 @@
-import { Avatar, BodyContainer, Container, CorrectButton, CreatorContainer, Days, Name, RatingContainer, User } from "./styles"
+import { Avatar, Body, BodyContainer, Container, CorrectButton, CreatorContainer, Days, Name, RatingContainer, User } from "./styles"
 import {CaretUpOutlined,CaretDownOutlined,CheckOutlined} from '@ant-design/icons';
-import { Body, Rating, RatingButton } from "../../styles";
+import { Rating, RatingButton } from "../../styles";
 import { AnswerT } from "../../../../types/answer";
 import { useAppSelector } from "../../../../hooks/redux";
 

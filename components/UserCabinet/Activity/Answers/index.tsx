@@ -58,7 +58,7 @@ export const AnswersComponent:React.FC<Props> = ({orderRule,onChangeOrderRule,lo
                 
             {(!loading && !answers.length) &&
                 <>{isMe 
-                ? <NoQuestions>You have not <LinkTo href={links.questions}>answered</LinkTo> any questions.</NoQuestions> 
+                ? <NoQuestions>You have not <LinkTo href={links.questions.base}>answered</LinkTo> any questions.</NoQuestions> 
                 :<NoQuestions>This user has not answered any questions.</NoQuestions>}</> }
 
             {loading && <Spin indicator={<Loading3QuartersOutlined/>}/>}

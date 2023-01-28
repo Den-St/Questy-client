@@ -1,10 +1,15 @@
 import styled from "styled-components";
+import { Media } from "../../../assets/breakpoints";
 
 export const Container = styled.div`
     display: flex;
     gap: 20px;
     margin-top: 15px;
     width: 85%;
+    ${Media.down.m}{
+        flex-direction: column;
+        width: 100%;
+    }
 `;
 
 export const LeftSide = styled.div`

@@ -1,12 +1,12 @@
 import { colors } from './../../../assets/palette';
 import styled from "styled-components";
 import Link from 'next/link';
+import { Media } from '../../../assets/breakpoints';
 
 export const Container = styled.div`
     width: 100%;
-    display: grid;
+    display: flex;
     gap: 15px;
-    grid-template-columns: 150px 500px;
     position: relative;
 `;
 export const AvatarContainer = styled.div`
@@ -15,11 +15,19 @@ export const AvatarContainer = styled.div`
     border-radius: 15px;
     object-fit: contain;
     overflow: hidden;
+    ${Media.down.m}{
+        width: 80px;
+        height:80px;
+    }
 `;
 
 export const Avatar = styled.img`
     width: 150px;
     height: 150px;
+    ${Media.down.m}{
+        width: 80px;
+        height: 80px;
+    }
 `;
 
 export const TextInfo = styled.div`
@@ -34,16 +42,14 @@ export const Name = styled.span`
 `;
 
 export const BottomInfo = styled.div`
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    display: flex;
 `;
 
 export const BottomInfoItem = styled.span`
     font-size: 14px;
     font-weight: 100;
     gap: 5px;
-    display: grid;
-    grid-template-columns: 15px 1fr;
+    display: flex;
 `;
 
 export const EditButton = styled(Link)<{$isActive:boolean}>`
@@ -63,5 +69,11 @@ export const EditButton = styled(Link)<{$isActive:boolean}>`
     &:hover{
         border-color:${colors.blues['-100']};
         box-shadow: 0px 0px 1px 1px ${colors.blues['-100']};
+    }
+    ${Media.down.m}{
+        width:70px;
+        height:25px;
+        top:15px;
+        right:0px;
     }
 `;

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import styled from "styled-components";
+import { Media } from "../../../../assets/breakpoints";
 
 export const Container = styled.div`
     display: flex;
@@ -7,6 +8,9 @@ export const Container = styled.div`
     row-gap: 30px;
     column-gap: 50px;
     width: 100%;
+    ${Media.down.m}{
+        flex-direction:column;
+    }
 `;
 
 export const RightSide = styled.div`
@@ -18,6 +22,9 @@ export const Item = styled.div`
     display: flex;
     flex-direction: column;
     width:45%;
+    ${Media.down.m}{
+        width: 100%;
+    }
 `;
 
 export const ItemHeader = styled.span`
@@ -27,6 +34,11 @@ export const ItemHeader = styled.span`
     justify-content: space-between;
     .select{
         width: 220px;
+    }
+    ${Media.down.m}{
+    .select{
+        width: 120px;
+    }
     }
 `;
 

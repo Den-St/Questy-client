@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import styled from "styled-components";
+import { Media } from '../../../../assets/breakpoints';
 
 export const Container = styled.div`
     width: 100%;
@@ -56,4 +57,32 @@ export const Name = styled.span`
 export const BodyContainer = styled.div`
     display: flex;
     width: 100%;
+`;
+
+export const Body = styled.div`
+    margin-top: 20px;
+    
+    padding: 0 10px 20px 10px;
+    color: #242629;
+    & p{
+        margin: 0;
+        color: #242629;
+        word-break: break-all;
+    }
+
+    & h1{
+        font-size: 18px;
+        margin: 0;
+        color: #242629;
+    }
+
+    & ol{
+        margin: 0;
+        color: #242629;
+        padding-left: 20px;
+    }
+    ${Media.down.m}{
+        margin-top: 10px;
+        padding: 0 5px 10px 5px;
+    }
 `;

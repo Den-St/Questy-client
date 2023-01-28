@@ -22,11 +22,12 @@ export const SearchBarComponent:React.FC<Props> = ({loading,data,search}) => {
     setInputData(e.target.value);
     search(e.target.value);
   }
+  
   return <Container>
-    <Magnifier>
+    <Magnifier onClick={() => setOnFocus(prev => !prev)}>
         <SvgIcon type={'magnifier'}/>
     </Magnifier>
-    <SearchInput onFocus={() => setOnFocus(true)} value={inputData} onChange={onChange} placeholder={'Search...'}/>
+    <SearchInput $focused={onFocus} onFocus={() => setOnFocus(true)} value={inputData} onChange={onChange} placeholder={'Search...'}/>
     {inputData && onFocus && <>
     <Overlay onClick={() => setOnFocus(false)}/>
     <DataContainer>
@@ -63,7 +64,7 @@ export const SearchBarComponent:React.FC<Props> = ({loading,data,search}) => {
             <DataDir>Users</DataDir>
            <UsersContainer>
             {data.users.map(user => <UserContainer key={user.id} href={routes.users.get({id:user.id.toString()})+'?dir=profile'}>
-                  <UserAvatar/>
+                  <UserAvatar src={'http://localhost:4000/' + user.avatar?.path}/>
                   <UserText>
                     <UserName>{user.name}</UserName>
                     {!!user.location && <UserLocation>{user.location}</UserLocation>}

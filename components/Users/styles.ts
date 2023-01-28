@@ -1,6 +1,7 @@
 import { colors } from './../../assets/palette';
 import styled from "styled-components";
 import Link from 'next/link';
+import { Media } from '../../assets/breakpoints';
 
 export const Container = styled.div`
     width: 80%;
@@ -29,6 +30,12 @@ export const Filters = styled.div`
     align-items: center;
     .hashTagsSelect{
         width: 300px;
+    }
+    ${Media.down.m}{
+        flex-direction: column;
+        align-items: flex-start;
+        .hashTagsSelect{
+        }
     }
 `;
 
