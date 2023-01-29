@@ -8,8 +8,8 @@ export const Container = styled.div`
     font-family: Arial, Helvetica, sans-serif;
 `;
 
-export const Center = styled.div`
+export const Center = styled.div<{$withSideBar:boolean}>`
     display: flex;
     margin-top: 50px;
-    margin-left: 15%;
+    margin-left: ${({$withSideBar}) => $withSideBar && `15%`}
 `;

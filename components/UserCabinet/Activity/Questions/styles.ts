@@ -107,7 +107,6 @@ export const Title = styled(Link)`
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
-    background-color: green;
     margin-bottom: 7px;
     ${Media.down.m}{
     }

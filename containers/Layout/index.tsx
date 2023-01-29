@@ -15,7 +15,7 @@ export default function Layout({children}:Props) {
   console.log('route ',route)
   return <Container>
     {!excludeHead.includes(route) && <Header/>}
-    <Center>
+    <Center $withSideBar={!excludeHead.includes(route)}>
     {!excludeSide.includes(route) && <SideBar/>}
       {children}
     </Center>

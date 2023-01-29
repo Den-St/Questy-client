@@ -1,5 +1,4 @@
-import { notification, StepProps } from 'antd'
-import { NotificationPlacement } from 'antd/es/notification/interface'
+import { StepProps } from 'antd'
 import Cookies from 'js-cookie'
 import { useRouter } from 'next/router'
 import React, { useEffect } from 'react'

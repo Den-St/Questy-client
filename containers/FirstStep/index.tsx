@@ -1,4 +1,4 @@
-import { FirstStepComponent } from "../../components/FirstStep"
+import { FirstStepComponent } from "../../components/Registration/FirstStep"
 import { FirstStepRegistrationT } from "../../types/registration"
 
 

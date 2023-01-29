@@ -33,7 +33,7 @@ export const EditFormComponent:React.FC<Props>= ({isOnLogout,onLogout,user,onCon
   },[isOnLogout,success])
 
   const [imageLoading,setImageLoading] = useState(false);
-  const [imageUrl, setImageUrl] = useState<string>('http://localhost:4000/' + user.avatar.path);
+  const [imageUrl, setImageUrl] = useState<string>('http://localhost:4000/' + user?.avatar?.path);
   const uploadButton = (
     <div>
       {imageLoading ? <LoadingOutlined /> : <PlusOutlined />}

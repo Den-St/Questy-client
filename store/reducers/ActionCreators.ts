@@ -2,9 +2,12 @@ import {AppDispatch} from "../index";
 import axios, {getConfig} from "../../axios";
 import {UserT} from "../../types/user";
 import {userSlice} from "./UserSlice";
+import Cookies from "js-cookie";
 
 export const authMe = () => async (dispatch:AppDispatch) => {
     try{
+        const token = Cookies.get('token');
+        if(!token) return;
         dispatch(userSlice.actions.authMe());
         const res = await axios.get<UserT>('auth/getMe', getConfig());
         console.log('me',res.data);

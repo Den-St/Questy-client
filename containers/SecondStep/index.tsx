@@ -1,4 +1,4 @@
-import { SecondStepComponent } from "../../components/SecondStep"
+import { SecondStepComponent } from "../../components/Registration/SecondStep"
 import { useSearchHashTags } from "../../hooks/searchHashTags"
 import { SecondStepT } from "../../types/registration"
 

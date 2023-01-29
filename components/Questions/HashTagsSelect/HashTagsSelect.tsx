@@ -33,7 +33,6 @@ export const HashTagsSelect:React.FC<Props> = ({onRemoveFavoriteHashTags,clicked
         else if(pickedHashTags?.length) {
             hashTagsNames = pickedHashTags?.toString().split(';').filter(hashTag => hashTag.length && !favoriteHashTagsNames?.includes(hashTag));//add hash-tags that do not appear in favorite hash-tags
         }
-
         onChange(hashTagsNames)
     },[onFavoriteHashTags]);
     

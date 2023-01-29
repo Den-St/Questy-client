@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Media } from "../../../assets/breakpoints";
 
 export const Container = styled.div`
     width: 100%;
@@ -28,6 +29,10 @@ export const Container = styled.div`
    }
    .ant-select-selector{
     width: 300px;
+   }
+   ${Media.down.m}{
+    align-items: center;
+    margin-top: 350px;
    }
 `;
 

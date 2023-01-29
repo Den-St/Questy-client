@@ -3,12 +3,12 @@ import { UploadChangeParam, RcFile } from "antd/es/upload";
 import { DebouncedFunc } from "lodash";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { HashTagT } from "../../types/hash-tag";
-import { SecondStepT } from "../../types/registration";
-import { Container } from '../ui-kit/Form/InputsContainer'
-import { Label } from "../ui-kit/Form/Label";
+import { HashTagT } from "./../../../types/hash-tag";
+import { SecondStepT } from "./../../../types/registration";
+import { Container } from './../../ui-kit/Form/InputsContainer'
+import { Label } from "./../../ui-kit/Form/Label";
 const {Option} = Select;
-import {beforeUpload, getBase64} from '../../helpers/avatarUpload';
+import {beforeUpload, getBase64} from './../../../helpers/avatarUpload';
 import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
 import { FormHorizontal, FormVertical } from "./styles";
 
@@ -48,12 +48,9 @@ export const SecondStepComponent:React.FC<Props> = ({onConfirm,search,hashTags,l
     }
   };
 
-
   return <Container>
     <Form
       name="basic"
-      labelCol={{ span: 8 }}
-      wrapperCol={{ span: 16 }}
       initialValues={{ remember: true }}
       onFinish={onConfirm}
       autoComplete="off"
@@ -82,7 +79,7 @@ export const SecondStepComponent:React.FC<Props> = ({onConfirm,search,hashTags,l
           <FormVertical>
             <Label>Birth date</Label>
             <Form.Item name="birthdate" >
-                <DatePicker style={{'width':'150px'}} />
+                <DatePicker/>
             </Form.Item>
           </FormVertical>
 
@@ -90,7 +87,6 @@ export const SecondStepComponent:React.FC<Props> = ({onConfirm,search,hashTags,l
             <Label>Location</Label>
             <Form.Item name={'location'}>
               <Select
-                style={{"width":'150px'}}
                 showSearch
                 placeholder="Select a location"
                 optionFilterProp="children"
@@ -134,7 +130,7 @@ export const SecondStepComponent:React.FC<Props> = ({onConfirm,search,hashTags,l
 
       </FormHorizontal>
 
-      <FormHorizontal gap="-50px">
+      <FormHorizontal gap="40px" >
         <FormVertical>
         <Label>Name</Label>
         <Form.Item
@@ -160,9 +156,9 @@ export const SecondStepComponent:React.FC<Props> = ({onConfirm,search,hashTags,l
       </FormHorizontal>
       
       <Label>Choose your occasion</Label>
-      <Form.Item style={{'width':'300px'}} name={'occasion'}>
+      <Form.Item 
+       name={'occasion'}>
         <Select
-          style={{ width: '100%' }}
           placeholder="Occasion"
           optionLabelProp="label"
         >
@@ -187,7 +183,6 @@ export const SecondStepComponent:React.FC<Props> = ({onConfirm,search,hashTags,l
       <Form.Item name={'favoriteHashTags'}>
         <Select
           mode="multiple"
-          style={{ width: '100%' }}
           optionLabelProp="label"
           onSearch={search}
         >
@@ -198,7 +193,8 @@ export const SecondStepComponent:React.FC<Props> = ({onConfirm,search,hashTags,l
         </Select>
       </Form.Item>
 
-      <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
+      <Form.Item 
+      >
         <Button type="primary" htmlType="submit">
           Submit
         </Button>
