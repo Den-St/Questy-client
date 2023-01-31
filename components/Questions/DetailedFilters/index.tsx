@@ -5,7 +5,7 @@ import { DetailedFiltersContainer, Filter, FilterHeader } from "../styles"
 
 type Props = {
     onChangeHashTags:(value:string[]) => void;
-    onChangeOnlyAnswered:() => void
+    onChangeOnlyAnswered?:() => void
 }
 
 export const DetailedFilters:React.FC<Props> = ({onChangeOnlyAnswered,onChangeHashTags}) => {
@@ -24,8 +24,8 @@ export const DetailedFilters:React.FC<Props> = ({onChangeOnlyAnswered,onChangeHa
             <div>Favorite hash-tags: <Switch checked={onFavoriteHashTags} defaultChecked={false} onChange={onChangeFavorite}/></div>
             <HashTagsSelectContainer onRemoveFavoriteHashTags={onRemoveFavoriteHashTags} clicked={clicked} onFavoriteHashTags={onFavoriteHashTags} onChange={onChangeHashTags}/>
         </Filter>
-        <Filter>
+        {onChangeOnlyAnswered && <Filter>
             <FilterHeader>Only answered: <Switch defaultChecked={false} onChange={onChangeOnlyAnswered}/></FilterHeader>
-        </Filter>
+        </Filter>}
     </DetailedFiltersContainer>
 }

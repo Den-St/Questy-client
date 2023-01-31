@@ -31,10 +31,18 @@ export const Filters = styled.div`
     .hashTagsSelect{
         width: 300px;
     }
+    .ant-select-selector{
+        width: 150px;
+    }
+
     ${Media.down.m}{
         flex-direction: column;
         align-items: flex-start;
         .hashTagsSelect{
+            width: 100px;
+        }
+        .ant-select-selector{
+            width: 110px;
         }
     }
 `;

@@ -1,7 +1,7 @@
 import React from 'react';
 import {icon} from "./types";
 
-import { MenuOutlined,RollbackOutlined,QuestionOutlined,BorderlessTableOutlined,ShoppingCartOutlined,HeartFilled,LeftOutlined,DeleteOutlined, RightOutlined, HomeOutlined, UpOutlined, DownOutlined, CheckOutlined, HeartOutlined, CloseOutlined, SearchOutlined, OrderedListOutlined, UserOutlined,PlusOutlined, WarningOutlined, EyeOutlined, LockOutlined, StarFilled, StarOutlined } from '@ant-design/icons';
+import { MenuOutlined,RollbackOutlined,QuestionOutlined,WechatOutlined,BorderlessTableOutlined,ShoppingCartOutlined,HeartFilled,LeftOutlined,DeleteOutlined, RightOutlined, HomeOutlined, UpOutlined, DownOutlined, CheckOutlined, HeartOutlined, CloseOutlined, SearchOutlined, OrderedListOutlined, UserOutlined,PlusOutlined, WarningOutlined, EyeOutlined, LockOutlined, StarFilled, StarOutlined } from '@ant-design/icons';
 
 export const ChildrenSvg:React.FC<{type: icon | undefined}> = ({type}) => {
     switch (type) {
@@ -29,7 +29,7 @@ export const ChildrenSvg:React.FC<{type: icon | undefined}> = ({type}) => {
         case 'rollBack' : return <RollbackOutlined/>;
         case 'hash-tag' : return <BorderlessTableOutlined />;
         case 'question' : return <QuestionOutlined />;
-
+        case 'communities' : return <WechatOutlined />;
         default: return null;
     }
 

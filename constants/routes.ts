@@ -21,6 +21,10 @@ export const links = {
         full:'/users?page=1&orderFieldName=rating&orderValue=ASC',
         base:'/users'
     },
+    communities:{
+        full:'/communities?page=1&orderFieldName=membersNumber&orderValue=ASC&search=&hashTags=',
+        base:'/communities'
+    },
     createQuestion:'/create-question',
     cabinetLinks:{
         edit:'?dir=edit',
@@ -137,5 +141,13 @@ export const sideBarRoutes:RouteT[] = [
         },
         label:'Users',
         svgName:'user'
+    },
+    {
+        link:{
+            full:links.communities.full,
+            base:links.communities.base,
+        },
+        label:'Communities',
+        svgName:'communities'
     },
 ]

@@ -65,7 +65,7 @@ export const DetailedFiltersContainer = styled.div`
     border: 1px solid #a7a7a7;
     background-color: #d6d6f9;
     ${Media.down.m}{
-        width: 90%;
+        width: 100%;
     }
 `;
 
@@ -75,6 +75,11 @@ export const Filter = styled.div`
     gap: 10px;
     .hashTagsSelect{
         width: 200px;
+    }
+    ${Media.down.m}{
+        .hashTagsSelect{
+        width: 160px;
+        }
     }
 `;
 

@@ -16,6 +16,6 @@ export const AuthProvider:React.FC<Props> = ({children}) => {
         }
     },[])
     // const id = useAppSelector(state => state.userReducer.user?.id);
-
+    console.log('f')
     return <>{children}</>
 }
