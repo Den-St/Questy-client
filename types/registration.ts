@@ -1,3 +1,4 @@
+import { UserT } from './user';
 import { DatePickerProps } from "antd";
 import { UploadChangeParam } from "antd/es/upload";
 
@@ -8,11 +9,7 @@ export type FirstStepRegistrationT = {
 
 export type FirstStepRegistrationResT = {
     token:string;
-    name:string;
-
-    id:number;
-
-    email:string;
+    user:UserT
 }
 
 export type SecondStepT = {

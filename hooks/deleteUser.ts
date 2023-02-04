@@ -5,8 +5,6 @@ import { useState } from "react";
 import { useAppSelector } from "./redux";
 import axios from '../axios';
 
-
-
 export const useDeleteUser = () => {
     const [success,setSuccess] = useState(false);
     const userId = useAppSelector(state => state.userReducer.user?.id);

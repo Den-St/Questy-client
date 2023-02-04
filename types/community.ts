@@ -4,7 +4,7 @@ export type CommunityT = {
     name:string,
     creator:UserT,
     members:UserT[],
-    memberNumber:number,
+    membersNumber:number,
     id:number,
     hashTags:HashTagT[]
 }

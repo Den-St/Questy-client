@@ -17,7 +17,7 @@ export const useGlobalSearch = () => {
         }
         setLoading(true);
         try{
-            const res = await axios.get<{questions:QuestionT[],hashTags:HashTagT[],users:UserT[]}>(`/questions/globalSearch/${name}`);
+            const res = await axios.get<{questions:QuestionT[],hashTags:HashTagT[],users:UserT[]}>(`/questions/globalSearch`,{params:{name}});
             setData(res.data);
         }catch(err){    
             console.log(err);

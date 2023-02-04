@@ -2,6 +2,7 @@ import { GetServerSideProps } from 'next';
 import React from 'react'
 import axios from '../../axios';
 import { Users } from '../../containers/Users'
+import { urlSearchParams } from '../../helpers/urlSearchParams';
 import { GetAllUsersPaginateT } from '../../types/getAllUsersPaginate';
 
 export const getServerSideProps:GetServerSideProps = async (context) =>  {
@@ -9,13 +10,13 @@ export const getServerSideProps:GetServerSideProps = async (context) =>  {
   const dto = {
     page,
     pageSize:36,
-    orderRule:{
-      fieldName:orderFieldName,
-      orderValue,
-    },
-    search
+    fieldName:orderFieldName,
+    orderValue,
+    search:search || ''
   }
-  const res = await axios.post<GetAllUsersPaginateT>(`/users/getAllPaginated`,dto);
+  const params = urlSearchParams(dto);
+
+  const res = await axios.get<GetAllUsersPaginateT>(`/users/getAllPaginated/${params}`);
   const data = res.data;
   return { props: { data } }
 }

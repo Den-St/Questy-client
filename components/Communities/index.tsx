@@ -1,14 +1,15 @@
 import { Pagination, Select } from "antd"
 import { useRouter } from "next/router"
 import { useState } from "react"
+import { hashTagUrl } from "../../helpers/route"
 import { CommunityT } from "../../types/community"
 import { Container, Header, PaginationContainer } from "../HashTags/styles"
 import { DetailedFilters } from "../Questions/DetailedFilters"
 import { PickedHashTags } from "../Questions/styles"
 import { Divider } from "../SideBar/styles"
 import { SearchBar } from "../Users/SearchBar"
-import { DetailedFiltersButton, Filters } from "../Users/styles"
-import { CommunitiesContainer, CommunityContainer, Name } from "./styles"
+import { DetailedFiltersButton, Filters, HashTag } from "../Users/styles"
+import { CommunitiesContainer, CommunityContainer, CreateCommunity, HashTags, Name, StatContainer, StatName, StatValue } from "./styles"
 
 type Props = {
     paginatedCommunities:{communities:CommunityT[],total:number},
@@ -42,6 +43,7 @@ export const CommunitiesComponent:React.FC<Props> = ({paginatedCommunities,onCha
     ];
     return <Container>
         <Header>Communities</Header>
+        <CreateCommunity href={'/createCommunity'} >Create your own community !</CreateCommunity>
         {hashTags?.length 
             ? <PickedHashTags>Picked hash-tags: {hashTags}</PickedHashTags>
             : <PickedHashTags>No picked hash-tags</PickedHashTags>
@@ -66,7 +68,18 @@ export const CommunitiesComponent:React.FC<Props> = ({paginatedCommunities,onCha
             {paginatedCommunities.communities.map(community => 
             <>
                 <CommunityContainer key={community.id}>
-                    <Name>{community.name}</Name>
+                    <Name href={`/communities/${community.id}`}>{community.name}</Name>
+                    <HashTags>
+                        {community?.hashTags.map(hashTag => 
+                            <HashTag href={hashTagUrl(hashTag.name)}>
+                                {hashTag.name}
+                            </HashTag>
+                        )}
+                    </HashTags>
+                    <StatContainer>
+                        <StatName>Members:</StatName>
+                        <StatValue>{community.membersNumber}</StatValue>
+                    </StatContainer>
                 </CommunityContainer>
                 <Divider/>
             </>)}

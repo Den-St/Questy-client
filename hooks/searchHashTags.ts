@@ -15,7 +15,7 @@ export const useSearchHashTags = () => {
         }
         setLoading(true);
         try{
-            const res = await axios.post<HashTagT[]>("/hash-tags/searchByName",{name:value});
+            const res = await axios.get<HashTagT[]>(`/hash-tags/searchByName`,{params:{name:value}});
             setHashTags(res.data as HashTagT[]);
         }catch(err){
             console.log(err);

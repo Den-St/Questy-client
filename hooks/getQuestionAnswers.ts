@@ -11,7 +11,7 @@ export const useGetQuestionAnswers = () => {
     const fetch = async () => {
         setAnswersLoading(true);
         try{
-            const res = await axios.get<AnswerT[]>(`/answers/getByQuestionId/${questionId}`);
+            const res = await axios.get<AnswerT[]>(`/answers/getByQuestionId`,{params:{questionId}});
             setAnswers(res.data);
         }catch(err){
             console.log(err);

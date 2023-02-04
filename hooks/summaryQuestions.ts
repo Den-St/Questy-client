@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from '../axios';
+import { urlSearchParams } from '../helpers/urlSearchParams';
 import { QuestionT } from '../types/question';
 export const useSummaryQuestions = (userId:number) => {
     const [questions,setQuestions] = useState<QuestionT[]>([]);
@@ -11,11 +12,12 @@ export const useSummaryQuestions = (userId:number) => {
         try{
             const dto = {
                 userId,
-                orderRule,
+                fieldName:orderRule.fieldName,
+                orderValue:orderRule.orderValue,
                 pageSize:5
             }
 
-            const res = await axios.post<{questions:QuestionT[],total:number}>(`/questions/getByUserIdPaginated`,dto);
+            const res = await axios.get<{questions:QuestionT[],total:number}>(`/questions/getByUserIdPaginated`,{params:dto});
             setQuestions(res.data.questions);
         }catch(err){
             console.log(err);

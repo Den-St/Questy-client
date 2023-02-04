@@ -1,3 +1,4 @@
+import { urlSearchParams } from './../helpers/urlSearchParams';
 import { useState, useEffect } from 'react';
 import axios from '../axios';
 import { AnswerT } from '../types/answer';
@@ -11,12 +12,13 @@ export const useSummaryAnswers = (userId:number) => {
         setLoading(true);
         const dto = {
             userId,
-            orderRule,
+            fieldName:orderRule.fieldName,
+            orderValue:orderRule.orderValue,
             pageSize:5
         }
 
         try{
-            const res = await axios.post<{answers:AnswerT[],total:number}>(`/answers/getByUserIdPaginated`,dto);
+            const res = await axios.get<{answers:AnswerT[],total:number}>(`/answers/getByUserIdPaginated`,{params:dto});
             setAnswers(res.data.answers);
         }catch(err){
             console.log(err)

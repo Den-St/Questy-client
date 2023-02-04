@@ -16,7 +16,7 @@ export const getServerSideProps:GetServerSideProps = async (context) =>  {
         search
     }
 
-    const res = await axios.post<GetPaginatedCommunities>(`/community/getPaginated`,dto);
+    const res = await axios.get<GetPaginatedCommunities>(`/community/getPaginated`,{params:dto});
     const data = res.data;
     return { props: { data:data } }
   }

@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 import axios from '../axios';
+import { urlSearchParams } from '../helpers/urlSearchParams';
 import {QuestionT} from '../types/question';
 
 export const useUsersPaginatedQuestions = (userId:number) => {
@@ -15,12 +16,13 @@ export const useUsersPaginatedQuestions = (userId:number) => {
         const dto = {
             userId,
             page,
-            orderRule,
+            fieldName:orderRule.fieldName,
+            orderValue:orderRule.orderValue,
             pageSize:10
         };
 
         try{
-            const res = await axios.post<{questions:QuestionT[],total:number}>('/questions/getByUserIdPaginated',dto);
+            const res = await axios.get<{questions:QuestionT[],total:number}>(`/questions/getByUserIdPaginated`,{params:dto});
             setQuestions(res.data.questions);
             setTotal(res.data.total);
             setLoading(false);

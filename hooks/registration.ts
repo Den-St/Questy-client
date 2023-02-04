@@ -5,7 +5,7 @@ import { FirstStepRegistrationT, FirstStepRegistrationResT, SecondStepT } from '
 import axios from "../axios";
 import axios_ from "axios";
 import { useState } from "react"
-import { useAppDispatch } from './redux';
+import { useAppDispatch, useAppSelector } from './redux';
 import { NotificationPlacement } from 'antd/es/notification/interface'
 import { UserT } from '../types/user';
 
@@ -26,9 +26,9 @@ export const useRegistration = (onSuccess:() => void) => {
             if(res.status == 201){
                 setStep(2);
                 Cookies.set('token',res.data.token);
-                dispatch(userSlice.actions.authMeSuccess({...res.data}));
+                dispatch(userSlice.actions.authMeSuccess({...res.data.user}));
                 setItems(items => ({...items,[2]:({...items[2],status:'finish'})}));
-                setUserId(res.data.id);
+                setUserId(res.data.user.id);
                 onSuccess();
             }
         }catch(err){
@@ -41,6 +41,7 @@ export const useRegistration = (onSuccess:() => void) => {
         try{
             setItems(items => ({...items,[2]:({...items[2],status:'process'})}));
             const {avatar,...detailedDto} = dto;
+            const user = useAppSelector(state => state).userReducer.user;
             let avatarPath = '';
 
             if(avatar?.file?.originFileObj) {
@@ -62,7 +63,7 @@ export const useRegistration = (onSuccess:() => void) => {
             const detailedRes = await axios.patch<{user:UserT,token:string}>('/users/setDetailedInfo',{...detailedDto,userId,avatarPath});
             if(detailedRes.status == 200){
                 Cookies.set('token',detailedRes.data.token);
-                dispatch(userSlice.actions.setDetailed({name:detailedRes.data.user.name,avatarUrl:avatarPath}))
+                user && dispatch(userSlice.actions.setDetailed({...user,name:detailedRes.data.user.name,avatar:{path:avatarPath}}))
                 setItems(items => ({...items,[2]:({...items[2],status:'finish'})}));
                 setSuccess(true);
             }

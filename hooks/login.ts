@@ -1,5 +1,5 @@
+import { urlSearchParams } from './../helpers/urlSearchParams';
 import { useAppDispatch } from './redux';
-import { userSlice } from './../store/reducers/UserSlice';
 import Cookies from 'js-cookie';
 import { useState } from 'react';
 import axios from '../axios';
@@ -12,7 +12,7 @@ export const useLogin = () => {
     const [err,setErr] = useState<any>();
     const onLogin = async (dto:LoginT) => {
         try{
-            const res = await axios.post<{token:string}>('/auth/login',dto);
+            const res = await axios.get<{token:string}>(`/auth/login`,{params:dto});
             if(res.status != 201) return;
             Cookies.set('token',res.data.token);
             dispatch(authMe());

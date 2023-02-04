@@ -17,7 +17,7 @@ export const useAskQuestion = (refetch:() => void) => {
     const chooseTemplate = async (id:number) => {
         setChosenTemplateLoading(true);
         try{
-            const res = await axios.get<QuestionTemplateT>(`/question-templates/get/${id}`);
+            const res = await axios.get<QuestionTemplateT>(`/question-templates/get`,{params:{id}});
             setChosenTemplate(res.data);
         }catch(err){
             console.log(err)
@@ -54,7 +54,7 @@ export const useAskQuestion = (refetch:() => void) => {
                 ...questionTemplate,
                 templateId:chosenTemplate?.id
             }
-            const res = await axios.post('/question-templates/edit',dto);
+            const res = await axios.patch('/question-templates/edit',dto);
             if(res.status === 200) await refetch();
         }catch(err){
             console.log(err);

@@ -16,7 +16,7 @@ export const getServerSideProps:GetServerSideProps = async (context) =>  {
         search
     }
 
-    const res = await axios.post<GetPaginatedHashTags>(`/hash-tags/getPAginated`,dto);
+    const res = await axios.get<GetPaginatedHashTags>(`/hash-tags/getPaginated`,{params:dto});
     const data = res.data;
     return { props: { data:data } }
   }

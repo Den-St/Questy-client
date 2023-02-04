@@ -6,8 +6,7 @@ import { QuestionT } from '../../types/question';
 
 export const getServerSideProps:GetServerSideProps = async (context) =>  {
     const {id} = context.query;
-  
-    const res = await axios.get<QuestionT>(`/questions/get/${id}`);
+    const res = await axios.get<QuestionT>(`/questions/get`,{params:{id}});
     const data = res.data;
     return { props: { data:data } }
   }

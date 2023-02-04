@@ -2,6 +2,7 @@ import { GetServerSideProps } from 'next';
 import React from 'react'
 import axios from '../../axios';
 import { Questions } from '../../containers/Questions';
+import { urlSearchParams } from '../../helpers/urlSearchParams';
 import { GetPagintatedQuestions } from '../../types/getPaginatedQuestions';
 
 export const getServerSideProps:GetServerSideProps = async (context) =>  {
@@ -10,15 +11,12 @@ export const getServerSideProps:GetServerSideProps = async (context) =>  {
         hashTags:decodeURI(hashTags?.toString() || ''),
         page,
         pageSize:15,
-        orderRule:{
-            fieldName:orderFieldName,
-            orderValue,
-        },
+        fieldName:orderFieldName,
+        orderValue,
+        onlyAnswered: onlyAnswered === 'true',
         search,
-        onlyAnswered: onlyAnswered === 'true'
     }
-  
-    const res = await axios.post<GetPagintatedQuestions>(`/questions/getPaginatedQuestions`,dto);
+    const res = await axios.get<GetPagintatedQuestions>(`/questions/getPaginatedQuestions`,{params:dto});
     const data = res.data;
     return { props: { data:data } }
   }

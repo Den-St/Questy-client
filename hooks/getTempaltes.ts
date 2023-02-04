@@ -11,7 +11,7 @@ export const useGetTemplates = () => {
     const fetch = async () => {
         setTemplatesLoading(true);
         try{
-            const res = await axios.get<QuestionTemplateT[]>(`/question-templates/getAllByUserId/${userId}`);
+            const res = await axios.get<QuestionTemplateT[]>(`/question-templates/getAllByUserId`,{params:{userId}});
             setTemplates(res.data);
         }catch(err){    
             console.log(err);

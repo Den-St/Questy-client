@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import axios from "../axios";
+import { urlSearchParams } from "../helpers/urlSearchParams";
 import { HashTagT } from "../types/hash-tag"
 
 export const useSummaryHashTags = (userId:number) => {
@@ -11,11 +12,14 @@ export const useSummaryHashTags = (userId:number) => {
         setLoading(true);
         const dto = {
             userId,
-            orderRule,
+            page:0,
+            fieldName:orderRule.fieldName,
+            orderValue:orderRule.orderValue,
             pageSize:5
         }
+
         try{
-            const res = await axios.post<{hashTags:HashTagT[],total:number}>(`/hash-tags/getCreatedHashTagsPaginated`,dto);
+            const res = await axios.get<{hashTags:HashTagT[],total:number}>(`/hash-tags/getCreatedHashTagsPaginated`,{params:dto});
             setHashTags(res.data.hashTags);
         }catch(err){
             console.log(err);

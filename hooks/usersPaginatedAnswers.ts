@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from '../axios';
+import { urlSearchParams } from '../helpers/urlSearchParams';
 import { AnswerT } from '../types/answer';
 
 export const useUsersPaginatedAnswers = (userId:number) => {
@@ -14,12 +15,13 @@ export const useUsersPaginatedAnswers = (userId:number) => {
         const dto = {
             userId,
             page,
-            orderRule,
+            fieldName:orderRule.fieldName,
+            orderValue:orderRule.orderValue,
             pageSize:10
         };
 
         try{
-            const res = await axios.post<{answers:AnswerT[],total:number}>('/answers/getByUserIdPaginated',dto);
+            const res = await axios.get<{answers:AnswerT[],total:number}>(`/answers/getByUserIdPaginated`,{params:dto});
             setAnswers(res.data.answers);
             setTotal(res.data.total);
             setLoading(false);

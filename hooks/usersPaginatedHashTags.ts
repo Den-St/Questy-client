@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from '../axios';
+import { urlSearchParams } from '../helpers/urlSearchParams';
 import { HashTagT } from '../types/hash-tag';
 
 export const useUsersPaginatedHashTags = (userId:number) => {
@@ -14,12 +15,15 @@ export const useUsersPaginatedHashTags = (userId:number) => {
         const dto = {
             userId,
             page,
-            orderRule,
+            fieldName:orderRule.fieldName,
+            orderValue:orderRule.orderValue,
             pageSize:10
         };
+        const params = urlSearchParams(dto);
 
         try{
-            const res = await axios.post<{hashTags:HashTagT[],total:number}>('/hash-tags/getCreatedHashTagsPaginated',dto);
+            const res = await axios.get<{hashTags:HashTagT[],total:number}>(`/hash-tags/getCreatedHashTagsPaginated`,{params:dto});
+
             setHashTags(res.data.hashTags);
             setTotal(res.data.total);
             setLoading(false);  
