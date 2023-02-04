@@ -13,7 +13,7 @@ export const useGetCorrectAnswers = () => {
     const fetch = async () => {
         setLoading(true);
         try {
-            const res = await axios.get<UserT>(`/users/getCorrectAnswers/${userId}`);
+            const res = await axios.get<UserT>(`/users/getCorrectAnswers`,{params:{userId}});
             setAnswers(res.data.correctAnswersOnSubscribedQuestions);
         }catch(err){
             console.log(err);

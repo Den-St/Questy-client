@@ -12,7 +12,7 @@ export const useGetNotSeenAnswers = () => {
     const fetch = async () => {
         setLoading(true);
         try{
-            const res = await axios.get<UserT>(`/users/getNotSeenAnswers/${userId}`);
+            const res = await axios.get<UserT>(`/users/getNotSeenAnswers`,{params:{userId}});
             setAnswers(res.data.notSeenAnswers);
         }catch(err){
             console.log(err);

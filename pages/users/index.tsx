@@ -14,9 +14,8 @@ export const getServerSideProps:GetServerSideProps = async (context) =>  {
     orderValue,
     search:search || ''
   }
-  const params = urlSearchParams(dto);
 
-  const res = await axios.get<GetAllUsersPaginateT>(`/users/getAllPaginated/${params}`);
+  const res = await axios.get<GetAllUsersPaginateT>(`/users/getAllPaginated`,{params:dto});
   const data = res.data;
   return { props: { data } }
 }

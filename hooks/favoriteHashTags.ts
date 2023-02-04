@@ -15,7 +15,7 @@ export const useFavoriteHashTags = () => {
 
     const fetch = async () => {
         try{
-            const res = await axios.get<UserT>(`/users/getFavoriteHashTags/${userId}`);
+            const res = await axios.get<UserT>(`/users/getFavoriteHashTags`,{params:{userId}});
             setHashTags(res.data.favoriteHashTags.map(hashTag => hashTag.id));
         }catch(err){
             console.log(err);

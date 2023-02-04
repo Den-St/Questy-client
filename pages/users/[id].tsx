@@ -7,7 +7,7 @@ import { GetUser } from '../../types/getUser';
 export const getServerSideProps:GetServerSideProps = async (context) =>  {
   const id = context.query.id;
 
-  const res = await axios.get<GetUser>(`/users/getById/${id}`);
+  const res = await axios.get<GetUser>(`/users/getById`,{params:{id}});
   const data = res.data;
   return { props: { data:data } }
 }
